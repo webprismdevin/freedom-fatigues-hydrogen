@@ -1,6 +1,8 @@
 import { json } from "@remix-run/node"; // or cloudflare/deno
 import { useLoaderData } from "@remix-run/react";
 import client from "~/lib/sanity";
+import type { LinksFunction } from "@remix-run/node"; // or cloudflare/deno
+import styles from "../styles/index.css";
 
 export const loader = async () => {
   const res = await client.fetch(
@@ -27,8 +29,16 @@ export default function Index() {
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
       <h1>Freedom Fatigues</h1>
-      <div>
-        <img src={data.home.hero.content[0].product.store.previewImageUrl} loading="eager" />
+      <div className="hero">
+        <img
+          src={data.home.hero.content[0].product.store.previewImageUrl}
+          loading="eager"
+          alt=""
+          srcSet=""
+          height={1080}
+          width={1080}
+          sizes="(max-width: 1080px) 100vw, 1080px"
+        />
       </div>
       <div style={{ display: "flex", overflow: "scroll", gap: "2rem" }}>
         {data.products.map((product: any) => (
@@ -45,4 +55,8 @@ export default function Index() {
       </div>
     </div>
   );
+}
+
+export function links() {
+  return [{ rel: "stylesheet", href: styles }];
 }
