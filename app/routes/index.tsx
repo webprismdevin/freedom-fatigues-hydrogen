@@ -28,7 +28,7 @@ export default function Index() {
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
       <h1>Freedom Fatigues</h1>
       <div>
-        <img src={data.home.hero.content[0].product.store.previewImageUrl} />
+        <img src={data.home.hero.content[0].product.store.previewImageUrl} loading="eager" />
       </div>
       <div style={{ display: "flex", overflow: "scroll", gap: "2rem" }}>
         {data.products.map((product: any) => (
