@@ -46,13 +46,15 @@ export default function Index() {
               loaderUrl="/api/image"
               src={product.store.previewImageUrl}
               placeholder="blur"
+              height={192}
+              width={192}
               responsive={[
                 {
                   size: {
                     width: 192,
                     height: 192,
                   },
-                  maxWidth: 256,
+                  maxWidth: 192,
                 },
               ]}
               dprVariants={[1, 3]}
