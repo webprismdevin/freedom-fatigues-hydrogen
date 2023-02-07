@@ -45,6 +45,7 @@ export default function Index() {
             <Image
               loaderUrl="/api/image"
               src={product.store.previewImageUrl}
+              placeholder="blur"
               responsive={[
                 {
                   size: {
