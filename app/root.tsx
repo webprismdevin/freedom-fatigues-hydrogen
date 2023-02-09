@@ -1,4 +1,4 @@
-import type { MetaFunction } from "@remix-run/node";
+import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -7,7 +7,9 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import AnalyticsListener from "./components/AnalyticsListener.client";
+import Navigation from "~/components/Navigation";
+
+import remixImageStyles from "remix-image/remix-image.css";
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
@@ -23,12 +25,16 @@ export default function App() {
         <Links />
       </head>
       <body>
+        <Navigation />
         <Outlet />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
-        {/* <AnalyticsListener /> */}
       </body>
     </html>
   );
 }
+
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: remixImageStyles },
+];
